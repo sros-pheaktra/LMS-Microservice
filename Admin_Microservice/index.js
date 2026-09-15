@@ -16,19 +16,22 @@ connectDB()
 
 // Search User
 app.get('/searchuser', async (req, res) => {
-    /*res.send("view user")*/
     try {
-        const { username } = req.query
+        const { username, email } = req.query
 
-        if (!username) {
+        if (!username && !email) {
             return res.status(400).json({
                 status: 'Failure',
-                message: 'Username is required'
+                message: 'Username or email is required'
             })
         }
 
-        const user = await User.findOne({ username })
-            .select('-password')
+        const user = await User.findOne({
+            $or: [
+                ...(username ? [{ username }] : []),
+                ...(email ? [{ email }] : [])
+            ]
+        }).select('-password')
 
         if (!user) {
             return res.status(404).json({
@@ -39,7 +42,7 @@ app.get('/searchuser', async (req, res) => {
 
         res.status(200).json({
             status: 'Success',
-            user: user
+            user
         })
 
     } catch (error) {
