@@ -18,7 +18,7 @@ app.use('/register', (req, res) => {
     console.log("API Gateway - Register")
 
     proxy.web(req, res, {
-        target: 'http://localhost:3001'
+        target: 'http://54.221.123.186:3001'
     })
 })
 
@@ -30,7 +30,7 @@ app.use('/auth', (req, res) => {
     console.log("API Gateway - Auth")
 
     proxy.web(req, res, {
-        target: 'http://localhost:3002'
+        target: 'http://54.221.123.186:3002'
     })
 })
 
@@ -47,7 +47,7 @@ app.use(
         console.log("API Gateway - Admin")
 
         proxy.web(req, res, {
-            target: 'http://localhost:3003'
+            target: 'http://54.167.22.215:3003'
         })
     }
 )
@@ -65,7 +65,7 @@ app.use(
         console.log("API Gateway - User")
         req.headers['x-user-id'] = req.user.userId
         proxy.web(req, res, {
-            target: 'http://localhost:3004'
+            target: 'http://52.23.239.187:3004'
         })
     }
 )
