@@ -75,5 +75,5 @@ app.use(
 // Start Gateway
 // ===============================
 app.listen(port, () => {
-    console.log(`API Gateway is running: http://localhost:${port}`)
+    console.log(`API Gateway is running: http://54.221.123.186:${port}`)
 })
