@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+
+  registration-micro:
+    container_name: registration_microservice
+
+    build:
+      context: ./registration_microservice
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+
+    ports:
+      - "3001:3001"
+
+    environment:
+      MONGO_URI: ${MONGO_URI}
+      PORT: 3001
+
+  login-micro:
+    container_name: authentication_microservice
+
+    build:
+      context: ./authentication_microservice
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+
+    ports:
+      - "3002:3002"
+
+    environment:
+      MONGO_URI: ${MONGO_URI}
+      PORT: 3002
