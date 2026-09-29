@@ -12,7 +12,7 @@ app.use(express.json())
 
 connectDB()
 
-app.post('/userregister', async (req, res) => {
+app.post('/register', async (req, res) => {
     try {
         const {username, email, password, role, phone} = req.body
 
