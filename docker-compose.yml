@@ -4,7 +4,7 @@ services:
     container_name: registration_microservice
 
     build:
-      context: ./registration_microservice
+      context: ./Registration_Microservice
       dockerfile: Dockerfile
 
     restart: unless-stopped
@@ -21,7 +21,7 @@ services:
     container_name: authentication_microservice
 
     build:
-      context: ./authentication_microservice
+      context: ./Authentication_Microservice
       dockerfile: Dockerfile
 
     restart: unless-stopped
